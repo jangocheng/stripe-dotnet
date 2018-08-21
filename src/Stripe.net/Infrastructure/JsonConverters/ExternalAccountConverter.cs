@@ -24,7 +24,7 @@ namespace Stripe.Infrastructure
         {
             var incoming = JObject.Load(reader);
 
-            var externalAccount = new StripeExternalAccount
+            var externalAccount = new ExternalAccount
             {
                 Id = incoming.SelectToken("id").ToString()
             };
