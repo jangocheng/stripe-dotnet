@@ -32,16 +32,6 @@
                     this.SetupRequestOptions(requestOptions)));
         }
 
-        public virtual StripeCard Create(string recipientId, StripeCreditCardOptions createOptions, StripeRequestOptions requestOptions = null)
-        {
-            var url = this.SetupUrl(recipientId, true);
-
-            return Mapper<StripeCard>.MapFromJson(
-                Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, url, false),
-                    this.SetupRequestOptions(requestOptions)));
-        }
-
         public virtual StripeCard Get(string customerOrRecipientId, string cardId, bool isRecipient = false, StripeRequestOptions requestOptions = null)
         {
             var url = this.SetupUrl(customerOrRecipientId, isRecipient, cardId);
@@ -88,17 +78,6 @@
         public virtual async Task<StripeCard> CreateAsync(string customerId, StripeCardCreateOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             var url = this.SetupUrl(customerId, false);
-
-            return Mapper<StripeCard>.MapFromJson(
-                await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, url, false),
-                    this.SetupRequestOptions(requestOptions),
-                    cancellationToken).ConfigureAwait(false));
-        }
-
-        public virtual async Task<StripeCard> CreateAsync(string recipientId, StripeCreditCardOptions createOptions, StripeRequestOptions requestOptions = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var url = this.SetupUrl(recipientId, true);
 
             return Mapper<StripeCard>.MapFromJson(
                 await Requestor.PostStringAsync(

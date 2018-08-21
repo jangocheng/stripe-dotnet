@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class StripeBankAccount : StripeEntityWithId, ISupportMetadata
     {
@@ -27,8 +28,21 @@
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        #region Expandable Customer
+        public string CustomerId { get; set; }
+
+        [JsonIgnore]
+        public StripeCustomer Customer { get; set; }
+
         [JsonProperty("customer")]
-        public string Customer { get; set; }
+        internal object InternalCustomer
+        {
+            set
+            {
+                StringOrObject<StripeCustomer>.Map(value, s => this.CustomerId = s, o => this.Customer = o);
+            }
+        }
+        #endregion
 
         [JsonProperty("default_for_currency")]
         public bool DefaultForCurrency { get; set; }

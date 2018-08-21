@@ -17,12 +17,6 @@
         public int AccountBalance { get; set; }
 
         /// <summary>
-        /// Warning: this is not in the documentation
-        /// </summary>
-        [JsonProperty("bank_accounts")]
-        public StripeList<CustomerBankAccount> CustomerBankAccounts { get; set; }
-
-        /// <summary>
         /// The customer’s VAT identification number
         /// </summary>
         [JsonProperty("business_vat_id")]
@@ -37,29 +31,6 @@
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
-
-        #region Expandable Default CustomerBankAccount
-
-        /// <summary>
-        /// Warning: this is not in the documentation
-        /// </summary>
-        public string DefaultCustomerBankAccountId { get; set; }
-
-        /// <summary>
-        /// Warning: this is not in the documentation
-        /// </summary>
-        [JsonIgnore]
-        public CustomerBankAccount DefaultCustomerBankAccount { get; set; }
-
-        [JsonProperty("default_bank_account")]
-        internal object InternalDefaultCustomerBankAccount
-        {
-            set
-            {
-                StringOrObject<CustomerBankAccount>.Map(value, s => this.DefaultCustomerBankAccountId = s, o => this.DefaultCustomerBankAccount = o);
-            }
-        }
-        #endregion
 
         #region Expandable DefaultSource
 
