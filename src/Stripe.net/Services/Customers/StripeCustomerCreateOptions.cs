@@ -41,7 +41,7 @@
         public string SourceToken { get; set; }
 
         [JsonProperty("source")]
-        public SourceCard SourceCard { get; set; }
+        public CardCreateNestedOptions SourceCard { get; set; }
 
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
