@@ -8,15 +8,15 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class StripeBankAccountTest : BaseStripeTest
+    public class BankAccountTest : BaseStripeTest
     {
         [Fact]
         public void DeserializeForAccount()
         {
             string json = GetFixture("/v1/accounts/acct_123/external_accounts/ba_123");
-            var bankAccount = Mapper<StripeBankAccount>.MapFromJson(json);
+            var bankAccount = Mapper<BankAccount>.MapFromJson(json);
             Assert.NotNull(bankAccount);
-            Assert.IsType<StripeBankAccount>(bankAccount);
+            Assert.IsType<BankAccount>(bankAccount);
             Assert.NotNull(bankAccount.Id);
             Assert.Equal("bank_account", bankAccount.Object);
         }
@@ -25,9 +25,9 @@ namespace StripeTests
         public void DeserializeForCustomer()
         {
             string json = GetFixture("/v1/customers/cus_123/bank_accounts/ba_123");
-            var bankAccount = Mapper<StripeBankAccount>.MapFromJson(json);
+            var bankAccount = Mapper<BankAccount>.MapFromJson(json);
             Assert.NotNull(bankAccount);
-            Assert.IsType<StripeBankAccount>(bankAccount);
+            Assert.IsType<BankAccount>(bankAccount);
             Assert.NotNull(bankAccount.Id);
             Assert.Equal("bank_account", bankAccount.Object);
         }
@@ -41,9 +41,9 @@ namespace StripeTests
             };
 
             string json = GetFixture("/v1/customers/cus_123/bank_accounts/ba_123", expansions);
-            var bankAccount = Mapper<StripeBankAccount>.MapFromJson(json);
+            var bankAccount = Mapper<BankAccount>.MapFromJson(json);
             Assert.NotNull(bankAccount);
-            Assert.IsType<StripeBankAccount>(bankAccount);
+            Assert.IsType<BankAccount>(bankAccount);
             Assert.NotNull(bankAccount.Id);
             Assert.Equal("bank_account", bankAccount.Object);
 

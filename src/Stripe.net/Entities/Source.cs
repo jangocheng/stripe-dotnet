@@ -19,7 +19,7 @@
 
         public StripeAccount Account { get; set; }
 
-        public StripeBankAccount BankAccount { get; set; }
+        public BankAccount BankAccount { get; set; }
 
         public StripeCard Card { get; set; }
 

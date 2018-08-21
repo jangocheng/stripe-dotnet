@@ -32,7 +32,7 @@ namespace Stripe.Infrastructure
             if (incoming.SelectToken("object")?.ToString() == "bank_account")
             {
                 externalAccount.Type = ExternalAccountType.BankAccount;
-                externalAccount.BankAccount = Mapper<StripeBankAccount>.MapFromJson(incoming.ToString());
+                externalAccount.BankAccount = Mapper<BankAccount>.MapFromJson(incoming.ToString());
             }
 
             if (incoming.SelectToken("object")?.ToString() == "card")

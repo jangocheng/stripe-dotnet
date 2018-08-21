@@ -5,7 +5,7 @@
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class StripeBankAccount : StripeEntityWithId, ISupportMetadata
+    public class BankAccount : StripeEntityWithId, ISupportMetadata
     {
         [JsonProperty("object")]
         public string Object { get; set; }

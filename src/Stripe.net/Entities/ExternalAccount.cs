@@ -19,6 +19,6 @@ namespace Stripe
 
         public StripeCard Card { get; set; }
 
-        public StripeBankAccount BankAccount { get; set; }
+        public BankAccount BankAccount { get; set; }
     }
 }
